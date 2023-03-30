@@ -9,6 +9,8 @@ namespace CalculatingWaterPerDay
     internal class Calculating
     {
         // Math 
+        // https://www.youtube.com/shorts/26_RduLTcXk
+        //
         // 1oz = 0.02835kg
         // 1cup = 236.5882ml
         // 1lbs = 0.453592kg
@@ -17,10 +19,16 @@ namespace CalculatingWaterPerDay
         //
 
 
-        public static int CalculatingWeight()
+        public static string CalculatingWeight(int amount)
         {
+            double cupCapacity = 236.5882;
+            double ounce = 0.02835;
+            int result = amount / 2;
+            double cup = ((result * ounce) / cupCapacity * 1000);
 
-            return 0;
+            string answer = $"\nThe recommended amount for person with the body weight of {amount}lbs, is {result}oz or {Decimal.Round((decimal)cup)} ";
+
+            return answer;
 
 
         }

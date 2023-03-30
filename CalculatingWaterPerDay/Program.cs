@@ -9,20 +9,23 @@ namespace CalculatingWaterPerDay
     internal class Program
     {
         public static string tonnage;
+        public static int choiseOfMetric;
         static void Main(string[] args)
-        {
-            int choiseOfMetric;
+        {           
             
             Calculating.ClassicRuleInfo();
             Console.WriteLine($"Would you like to make the calculation:\n1.Kilograms (metric) \n2.Pounds (imperial)\n");
-            
-                choiseOfMetric = Char.ToUpper(Console.ReadKey().KeyChar);
-                
-                switch (choiseOfMetric)
+
+            //choiseOfMetric = Char.ToUpper(Console.ReadKey().KeyChar);
+            choiseOfMetric = Char.ToUpper(Console.ReadKey().KeyChar);
+
+
+
+            switch (choiseOfMetric)
                 {
                     case '1': //Kilo
                         Console.Clear();
-
+                        imperial(choiseOfMetric);
                         break;
                     case '2': //lbs
                         Console.Clear();
@@ -32,12 +35,6 @@ namespace CalculatingWaterPerDay
                         Console.WriteLine("\n u stuped");
                         return;
                 }
-
-           
-
-            
-
-
             // switch 
             // metric
             // or
@@ -64,7 +61,7 @@ namespace CalculatingWaterPerDay
                 //if(double.TryParse(tonnage, out double amount))
 
                 //lbs
-                if (int.TryParse(tonnage, out int amount))
+                if (double.TryParse(tonnage, out double amount))
                 {
                     Console.WriteLine(Calculating.CalculatingWeight(amount, choiseOfMetric));
                     break;

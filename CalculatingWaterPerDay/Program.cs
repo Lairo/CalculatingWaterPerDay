@@ -10,7 +10,8 @@ namespace CalculatingWaterPerDay
     {
         public static string tonnage;
         public static int choiseOfMetric;
-        static void Main(string[] args)
+        public static bool choiceMade;
+        static void Main()
         {           
             
             Calculating.ClassicRuleInfo();
@@ -19,30 +20,58 @@ namespace CalculatingWaterPerDay
             //choiseOfMetric = Char.ToUpper(Console.ReadKey().KeyChar);
             choiseOfMetric = Char.ToUpper(Console.ReadKey().KeyChar);
 
-
-
-            switch (choiseOfMetric)
+            while (choiseOfMetric != '1' || choiseOfMetric != '2' || choiseOfMetric != '3')
+            {
+                if (!choiceMade)
                 {
-                    case '1': //Kilo
-                        Console.Clear();
-                        imperial(choiseOfMetric);
-                        break;
-                    case '2': //lbs
-                        Console.Clear();
-                        imperial(choiseOfMetric);
-                        break;
-                    default:
-                        Console.WriteLine("\n u stuped");
-                        return;
+                    switch (choiseOfMetric)
+                    {
+                        case '1': //Kilo
+                            choiceMade = true;
+                            //Console.Clear();
+                            imperial(choiseOfMetric);
+                            break;
+                        case '2': //lbs
+                            choiceMade = true;
+                            //Console.Clear();
+                            imperial(choiseOfMetric);
+                            break;
+                        case '3': //lbs
+                            choiceMade = true;
+                            //Console.Clear();
+                            imperial(choiseOfMetric);
+                            break;
+                        default:
+                            Console.WriteLine("\n noup");
+                            break;
+                    }
+                   
                 }
+                else
+                {
+                    switch (choiseOfMetric)
+                    {
+                        case '1': //Kilo
+                            //Console.Clear();
+                            choiceMade = true;
+                            imperial(choiseOfMetric);
+                            break;
+                        case '2': //lbs
+                            //Console.Clear();
+                            choiceMade = true;
+                            imperial(choiseOfMetric);
+                            break;
+                        default:
+                            Console.WriteLine("\nnoup");
+                            break;
+                    }                    
+                }
+                break;
+            }
             // switch 
             // metric
             // or
             // imperial
-
-            Console.WriteLine("\nHello.\nHow much do you weigh?\n");
-
-                //Calculation
 
                 Console.WriteLine("Would you like to convert the number to alternative system?\n (Y or N)");
 
@@ -55,7 +84,7 @@ namespace CalculatingWaterPerDay
         {            
             while (true)
             {
-                Console.WriteLine($"Enter weight");
+                Console.Write($"\nEnter weight: ");
 
                 tonnage = Console.ReadLine();
                 //if(double.TryParse(tonnage, out double amount))

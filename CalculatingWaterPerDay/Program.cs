@@ -6,6 +6,14 @@ using System.Threading.Tasks;
 
 namespace CalculatingWaterPerDay
 {
+
+    // TODO
+    // Previous calculations in a list/array
+    //  -multiple list/array conversion i.e.: a) 80L, 1.1L or 176lbs 11cups
+    //                                        b) 80L, 1.1L or 176lbs 11cups
+
+
+
     internal class Program
     {
         public static string tonnage = "";
@@ -46,22 +54,13 @@ namespace CalculatingWaterPerDay
                         Console.Write("\nPlease enter a valid number.\n\n");
                         break;
                 }
-            }
-            // switch 
-            // metric
-            // or
-            // imperial
+            }            
 
                 Console.WriteLine("Would you like to convert the number to alternative system?\n (Y or N)");
-
-                // switch 
-                // convert and bye
-                // or just bye
-            
         }
         public static void Imperial(int choiseOfMetric)
-        {            
-            while (tonnageNew == 0)
+        {
+            while (true)
             {
                 Console.Write($"\nEnter weight: ");
 
@@ -72,8 +71,7 @@ namespace CalculatingWaterPerDay
                 if (double.TryParse(tonnage, out double amount))
                 {
                     tonnageNew = amount;
-                    Console.WriteLine(Calculating.CalculatingWeight(amount, choiseOfMetric));
-                    tonnageNew = 0;
+                    Console.WriteLine(Calculating.CalculatingWeight(amount, choiseOfMetric));                    
                     return;
                 }
                 else

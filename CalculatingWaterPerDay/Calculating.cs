@@ -18,20 +18,20 @@ namespace CalculatingWaterPerDay
         // .5oz/1lbs of body weight
         //
 
-        public static void Converting(double amount, int choice)
+        public static void Converting(double ConversionAmount, int choice)
         {
 
             double newWeight;
 
             if (choice == '1')
             {
-                newWeight = amount * 0.453592;
-                Console.WriteLine(Calculating.CalculatingWeight(newWeight, 2));
+                newWeight = ConversionAmount * 0.453;
+                Console.WriteLine(Calculating.CalculatingWeight(newWeight, 1));
             }
             else
             {
-                newWeight = amount / 0.453592;
-                Console.WriteLine(Calculating.CalculatingWeight(newWeight, 1));
+                newWeight = ConversionAmount / 0.453;
+                Console.WriteLine(Calculating.CalculatingWeight(newWeight, 2));
             }
         }
 
@@ -58,11 +58,11 @@ namespace CalculatingWaterPerDay
             else
             {
                 denomination = "lbs";
-                recommendedAmmount = $"is {Decimal.Round((decimal)cup)} cups";
+                recommendedAmmount = $" is {Decimal.Round((decimal)cup)} cups";
             }
 
             // TODO string answer calc
-            string answer = $"\nThe recommended amount for person with the body weight of {amount}{denomination} " + recommendedAmmount + " of water.\n";
+            string answer = $"\nThe recommended amount for person with the body weight of {amount}{denomination}" + recommendedAmmount + " of water.\n";
 
             return answer;
         }

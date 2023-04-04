@@ -8,70 +8,44 @@ namespace CalculatingWaterPerDay
 {
     internal class Program
     {
-        public static string tonnage;
+        public static string tonnage = "";
         public static int choiseOfMetric;
         public static bool choiceMade = true;
+        public static double tonnageNew;
         static void Main()
         {           
             
             Calculating.ClassicRuleInfo();
-            Console.WriteLine($"Would you like to make the calculation:\n1.Kilograms (metric) \n2.Pounds (Imperial)\n");
+            
 
             //choiseOfMetric = Char.ToUpper(Console.ReadKey().KeyChar);
-            choiseOfMetric = Char.ToUpper(Console.ReadKey().KeyChar);
+            //choiseOfMetric = Char.ToUpper(Console.ReadKey().KeyChar);
 
             while (choiseOfMetric != '1' || choiseOfMetric != '2' || choiseOfMetric != '3')
             {
-                if (!choiceMade)
+                Console.WriteLine($"Would you like to make the calculation:\n1.Kilograms (metric) \n2.Pounds (Imperial)\n3.Translate Imperial <> Metric\n4.Exit\n");
+                choiseOfMetric = Char.ToUpper(Console.ReadKey().KeyChar);
+                switch (choiseOfMetric)
                 {
-                    switch (choiseOfMetric)
-                    {
-                        case '1': //Kilo
-                            choiceMade = false;
-                            //Console.Clear();
-                            Imperial(choiseOfMetric);
-                            break;
-                        case '2': //lbs
-                            choiceMade = false;
-                            //Console.Clear();
-                            Imperial(choiseOfMetric);
-                            break;
-                        case '3': //lbs
-                            choiceMade = false;
-                            //Console.Clear();
-                            Imperial(choiseOfMetric);
-                            break;
-                        default:
-                            Console.WriteLine("\nPlease enter a valid number.");
-                            break;
-                    }
-                   // break;
-                   
+                    case '1': //Kilo
+                        Imperial(choiseOfMetric);
+                        break;
+                    case '2': //lbs
+                        Imperial(choiseOfMetric);
+                        break;
+                    case '3': //lbs
+                        Calculating.Converting(tonnageNew, choiseOfMetric);
+                        Console.WriteLine("\n");
+                        break;
+                    case '4': //Exit
+                        Console.WriteLine("\nBye \n");
+                        Environment.Exit(0);                        
+                        break;
+                    default:
+                        Console.Clear();
+                        Console.Write("\nPlease enter a valid number.\n\n");
+                        break;
                 }
-                else
-                //{ while (choiseOfMetric != '1' || choiseOfMetric != '2') 
-                    { 
-                        switch (choiseOfMetric)
-                        {
-                            case '1': //Kilo
-                                      //Console.Clear();
-                                choiceMade = false;
-                                Imperial(choiseOfMetric);
-                                break;
-                            case '2': //lbs
-                                      //Console.Clear();
-                                choiceMade = false;
-                                Imperial(choiseOfMetric);
-                                break;                       
-                        default:
-                            Console.WriteLine("\nPlease enter a valid number.");
-                            break;
-
-                    }
-                        //break;
-                    //}                    
-                }
-               // break;
             }
             // switch 
             // metric
@@ -87,7 +61,7 @@ namespace CalculatingWaterPerDay
         }
         public static void Imperial(int choiseOfMetric)
         {            
-            while (true)
+            while (tonnageNew == 0)
             {
                 Console.Write($"\nEnter weight: ");
 
@@ -97,13 +71,16 @@ namespace CalculatingWaterPerDay
                 //lbs
                 if (double.TryParse(tonnage, out double amount))
                 {
+                    tonnageNew = amount;
                     Console.WriteLine(Calculating.CalculatingWeight(amount, choiseOfMetric));
+                    tonnageNew = 0;
                     return;
                 }
                 else
                 {
                     Console.WriteLine("Please enter a valid number.");
                 }
+                return;
             }
         }
     }

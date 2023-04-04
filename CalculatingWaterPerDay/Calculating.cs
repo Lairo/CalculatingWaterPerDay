@@ -18,7 +18,7 @@ namespace CalculatingWaterPerDay
         // .5oz/1lbs of body weight
         //
 
-        public static void Convertng(double amount, int choice)
+        public static void Converting(double amount, int choice)
         {
 
             double newWeight;
@@ -26,12 +26,12 @@ namespace CalculatingWaterPerDay
             if (choice == '1')
             {
                 newWeight = amount * 0.453592;
-                CalculatingWeight(newWeight, 2);
+                Console.WriteLine(Calculating.CalculatingWeight(newWeight, 2));
             }
             else
             {
                 newWeight = amount / 0.453592;
-                CalculatingWeight(newWeight, 1);
+                Console.WriteLine(Calculating.CalculatingWeight(newWeight, 1));
             }
         }
 

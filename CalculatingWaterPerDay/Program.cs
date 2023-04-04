@@ -10,12 +10,12 @@ namespace CalculatingWaterPerDay
     {
         public static string tonnage;
         public static int choiseOfMetric;
-        public static bool choiceMade;
+        public static bool choiceMade = true;
         static void Main()
         {           
             
             Calculating.ClassicRuleInfo();
-            Console.WriteLine($"Would you like to make the calculation:\n1.Kilograms (metric) \n2.Pounds (imperial)\n");
+            Console.WriteLine($"Would you like to make the calculation:\n1.Kilograms (metric) \n2.Pounds (Imperial)\n");
 
             //choiseOfMetric = Char.ToUpper(Console.ReadKey().KeyChar);
             choiseOfMetric = Char.ToUpper(Console.ReadKey().KeyChar);
@@ -27,46 +27,51 @@ namespace CalculatingWaterPerDay
                     switch (choiseOfMetric)
                     {
                         case '1': //Kilo
-                            choiceMade = true;
+                            choiceMade = false;
                             //Console.Clear();
-                            imperial(choiseOfMetric);
+                            Imperial(choiseOfMetric);
                             break;
                         case '2': //lbs
-                            choiceMade = true;
+                            choiceMade = false;
                             //Console.Clear();
-                            imperial(choiseOfMetric);
+                            Imperial(choiseOfMetric);
                             break;
                         case '3': //lbs
-                            choiceMade = true;
+                            choiceMade = false;
                             //Console.Clear();
-                            imperial(choiseOfMetric);
+                            Imperial(choiseOfMetric);
                             break;
                         default:
-                            Console.WriteLine("\n noup");
+                            Console.WriteLine("\nPlease enter a valid number.");
                             break;
                     }
+                   // break;
                    
                 }
                 else
-                {
-                    switch (choiseOfMetric)
-                    {
-                        case '1': //Kilo
-                            //Console.Clear();
-                            choiceMade = true;
-                            imperial(choiseOfMetric);
-                            break;
-                        case '2': //lbs
-                            //Console.Clear();
-                            choiceMade = true;
-                            imperial(choiseOfMetric);
-                            break;
+                //{ while (choiseOfMetric != '1' || choiseOfMetric != '2') 
+                    { 
+                        switch (choiseOfMetric)
+                        {
+                            case '1': //Kilo
+                                      //Console.Clear();
+                                choiceMade = false;
+                                Imperial(choiseOfMetric);
+                                break;
+                            case '2': //lbs
+                                      //Console.Clear();
+                                choiceMade = false;
+                                Imperial(choiseOfMetric);
+                                break;                       
                         default:
-                            Console.WriteLine("\nnoup");
+                            Console.WriteLine("\nPlease enter a valid number.");
                             break;
-                    }                    
+
+                    }
+                        //break;
+                    //}                    
                 }
-                break;
+               // break;
             }
             // switch 
             // metric
@@ -80,7 +85,7 @@ namespace CalculatingWaterPerDay
                 // or just bye
             
         }
-        public static void imperial(int choiseOfMetric)
+        public static void Imperial(int choiseOfMetric)
         {            
             while (true)
             {
@@ -93,7 +98,7 @@ namespace CalculatingWaterPerDay
                 if (double.TryParse(tonnage, out double amount))
                 {
                     Console.WriteLine(Calculating.CalculatingWeight(amount, choiseOfMetric));
-                    break;
+                    return;
                 }
                 else
                 {

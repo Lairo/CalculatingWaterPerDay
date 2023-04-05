@@ -19,30 +19,30 @@ namespace CalculatingWaterPerDay
     internal class Program
     {
         public static string tonnage = "";
-        public static int choiseOfMetric;
+        public static int choiceOfMetric;
         public static bool choiceMade = true;
         public static double tonnageNew;
         static void Main()
         {      
             Calculating.ClassicRuleInfo();
             
-            //choiseOfMetric = Char.ToUpper(Console.ReadKey().KeyChar);
-            //choiseOfMetric = Char.ToUpper(Console.ReadKey().KeyChar);
+            //choiceOfMetric = Char.ToUpper(Console.ReadKey().KeyChar);
+            //choiceOfMetric = Char.ToUpper(Console.ReadKey().KeyChar);
 
-            while (choiseOfMetric != '1' || choiseOfMetric != '2' || choiseOfMetric != '3')
+            while (choiceOfMetric != '1' || choiceOfMetric != '2' || choiceOfMetric != '3')
             {
                 Console.WriteLine($"Would you like to make the calculation:\n1.Kilograms (metric) \n2.Pounds (Imperial)\n3.Translate Imperial <> Metric\n4.Clear the screen\n0.Exit\n");
-                choiseOfMetric = Char.ToUpper(Console.ReadKey().KeyChar);
-                switch (choiseOfMetric)
+                choiceOfMetric = Char.ToUpper(Console.ReadKey().KeyChar);
+                switch (choiceOfMetric)
                 {
                     case '1': //Kilo
-                        Imperial(choiseOfMetric);
+                        Imperial(choiceOfMetric);
                         break;
                     case '2': //lbs
-                        Imperial(choiseOfMetric);
+                        Imperial(choiceOfMetric);
                         break;
                     case '3': //lbs
-                        Calculating.Converting(tonnageNew, choiseOfMetric);
+                        Calculating.Converting(tonnageNew, choiceOfMetric);
                         Console.WriteLine("\n");
                         break;
                     case '4': //clear
@@ -60,7 +60,7 @@ namespace CalculatingWaterPerDay
             }       
                 Console.WriteLine("Would you like to convert the number to alternative system?\n (Y or N)");
         }
-        public static void Imperial(int choiseOfMetric)
+        public static void Imperial(int choiceOfMetric)
         {
             while (true)
             {
@@ -73,7 +73,7 @@ namespace CalculatingWaterPerDay
                 if (double.TryParse(tonnage, out double amount))
                 {
                     tonnageNew = amount;
-                    Console.WriteLine(Calculating.CalculatingWeight(amount, choiseOfMetric));                    
+                    Console.WriteLine(Calculating.CalculatingWeight(amount, choiceOfMetric));                    
                     return;
                 }
                 else

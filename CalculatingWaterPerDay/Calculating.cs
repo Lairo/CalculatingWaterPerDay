@@ -20,49 +20,48 @@ namespace CalculatingWaterPerDay
 
         public static void Converting(double ConversionAmount, int choice)
         {
-
             double newWeight;
 
-            if (choice == '1')
+            if (choice == 49)
             {
                 newWeight = ConversionAmount * 0.453;
-                Console.WriteLine(Calculating.CalculatingWeight(newWeight, 1));
+                Console.WriteLine(Calculating.CalculatingWeight(newWeight, 2));
             }
             else
             {
                 newWeight = ConversionAmount / 0.453;
-                Console.WriteLine(Calculating.CalculatingWeight(newWeight, 2));
+                Console.WriteLine(Calculating.CalculatingWeight(newWeight, 1));
             }
         }
 
         public static string CalculatingWeight(double amount, int choice)
         {
-            double cupCapacity = 236.5882;
-            double ounce = 0.02835;
+            double cupCapacityInMilliliters = 236.5882;
+            double ounceInKiloGrams = 0.02835;
             string denomination;
             string recommendedAmmount;
 
             // 0.5oz per body weight; ergo result
             double result = amount / 2;
 
-            double cup = ((result * ounce) / cupCapacity * 1000);
+            double cup = ((result * ounceInKiloGrams) / cupCapacityInMilliliters * 1000);
 
             //converting to liters from ounces
-            double liters = result * ounce;
+            double liters = result * ounceInKiloGrams;
 
             if (choice == '1')
             {
                 denomination = "KG";
-                recommendedAmmount = $"is {liters:0.00}L ";
+                recommendedAmmount = $" is {liters:0.00}L water a day,\n\t\twhich adds up to {Decimal.Round((decimal)cup*2)} cups, per day.";
             }
             else
             {
                 denomination = "lbs";
-                recommendedAmmount = $" is {Decimal.Round((decimal)cup)} cups";
+                recommendedAmmount = $" is {result:0}oz of water a day,\n\t\twhich adds up to {Decimal.Round((decimal)cup)} cups, per day.";
             }
 
             // TODO string answer calc
-            string answer = $"\nThe recommended amount for person with the body weight of {amount}{denomination}" + recommendedAmmount + " of water.\n";
+            string answer = $"\nThe recommended amount for person with the body weight of {amount}{denomination}" + recommendedAmmount + "\n";
 
             return answer;
         }

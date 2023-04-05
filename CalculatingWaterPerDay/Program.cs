@@ -11,7 +11,9 @@ namespace CalculatingWaterPerDay
     // Previous calculations in a list/array
     //  -multiple list/array conversion i.e.: a) 80L, 1.1L or 176lbs 11cups
     //                                        b) 80L, 1.1L or 176lbs 11cups
-
+    //  database .csv ?
+    // GUI
+    // Mobile?
 
 
     internal class Program
@@ -21,17 +23,15 @@ namespace CalculatingWaterPerDay
         public static bool choiceMade = true;
         public static double tonnageNew;
         static void Main()
-        {           
-            
+        {      
             Calculating.ClassicRuleInfo();
             
-
             //choiseOfMetric = Char.ToUpper(Console.ReadKey().KeyChar);
             //choiseOfMetric = Char.ToUpper(Console.ReadKey().KeyChar);
 
             while (choiseOfMetric != '1' || choiseOfMetric != '2' || choiseOfMetric != '3')
             {
-                Console.WriteLine($"Would you like to make the calculation:\n1.Kilograms (metric) \n2.Pounds (Imperial)\n3.Translate Imperial <> Metric\n4.Exit\n");
+                Console.WriteLine($"Would you like to make the calculation:\n1.Kilograms (metric) \n2.Pounds (Imperial)\n3.Translate Imperial <> Metric\n4.Clear the screen\n0.Exit\n");
                 choiseOfMetric = Char.ToUpper(Console.ReadKey().KeyChar);
                 switch (choiseOfMetric)
                 {
@@ -45,8 +45,11 @@ namespace CalculatingWaterPerDay
                         Calculating.Converting(tonnageNew, choiseOfMetric);
                         Console.WriteLine("\n");
                         break;
-                    case '4': //Exit
-                        Console.WriteLine("\nBye \n");
+                    case '4': //clear
+                        Console.Clear();
+                        break;
+                    case '0': //Exit
+                        Console.WriteLine("\nBye\n");
                         Environment.Exit(0);                        
                         break;
                     default:
@@ -54,8 +57,7 @@ namespace CalculatingWaterPerDay
                         Console.Write("\nPlease enter a valid number.\n\n");
                         break;
                 }
-            }            
-
+            }       
                 Console.WriteLine("Would you like to convert the number to alternative system?\n (Y or N)");
         }
         public static void Imperial(int choiseOfMetric)

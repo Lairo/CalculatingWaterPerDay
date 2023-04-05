@@ -1,18 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CalculatingWaterPerDay
 {
 
     // TODO
-    // Previous calculations in a list/array
-    //  -multiple list/array conversion i.e.: a) 80L, 1.1L or 176lbs 11cups
-    //                                        b) 80L, 1.1L or 176lbs 11cups
-    //  database .csv ?
+    // 
     // GUI
+    // Blazor?
     // Mobile?
 
 
@@ -25,14 +19,17 @@ namespace CalculatingWaterPerDay
         public static double tonnageNew;
         static void Main()
         {      
-            Calculating.ClassicRuleInfo();
-            
-            //choiceOfMetric = Char.ToUpper(Console.ReadKey().KeyChar);
-            //choiceOfMetric = Char.ToUpper(Console.ReadKey().KeyChar);
+            Calculating.ClassicRuleInfo();            
 
             while (choiceOfMetric != '1' || choiceOfMetric != '2' || choiceOfMetric != '3')
             {
-                Console.WriteLine($"Would you like to make the calculation:\n1.Kilograms (metric) \n2.Pounds (Imperial)\n3.Translate Imperial <> Metric\n4.Clear the screen\n0.Exit\n");
+                Console.WriteLine($"\nWould you like to make the calculation:" +
+                    $"\n\t1.Kilograms (Metric) " +
+                    $"\n\t2.Pounds (Imperial)" +
+                    $"\n\t3.Translate Last Calculation Metric <> Imperial" +
+                    $"\n\t4.List Previous Choices" +
+                    $"\n\t9.Clear the screen" +
+                    $"\n\t0.Exit\n");
                 choiceOfMetric = Char.ToUpper(Console.ReadKey().KeyChar);
                 switch (choiceOfMetric)
                 {
@@ -48,7 +45,11 @@ namespace CalculatingWaterPerDay
                         Calculating.Converting(tonnageNew, initialChoice);
                         Console.WriteLine("\n");
                         break;
-                    case '4': //clear
+                    case '4': //List Previous Choices
+                        //ListingPreviousChoices.
+                        Console.WriteLine("\nEmpty.\n");
+                        break;
+                    case '9': //clear
                         Console.Clear();
                         break;
                     case '0': //Exit
@@ -61,7 +62,7 @@ namespace CalculatingWaterPerDay
                         break;
                 }
             }       
-                Console.WriteLine("Would you like to convert the number to alternative system?\n (Y or N)");
+                
         }
         public static void Imperial(int choiceOfMetric)
         {
@@ -70,9 +71,7 @@ namespace CalculatingWaterPerDay
                 Console.Write($"\nEnter weight: ");
 
                 tonnage = Console.ReadLine();
-                //if(double.TryParse(tonnage, out double amount))
-
-                //lbs
+                
                 if (double.TryParse(tonnage, out double amount))
                 {
                     tonnageNew = amount;

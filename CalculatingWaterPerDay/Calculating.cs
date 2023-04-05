@@ -1,13 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CalculatingWaterPerDay
 {
     internal class Calculating
     {
+        //TODO
+        // Constructor
+        // get;set;
+        // 
+
+        public static double cupCapacityInMilliliters = 236.5882;
+        public static double ounceInKiloGrams = 0.02835;
+
         // Math 
         // https://www.youtube.com/shorts/26_RduLTcXk
         //
@@ -21,7 +25,12 @@ namespace CalculatingWaterPerDay
         public static void Converting(double ConversionAmount, int initialChoice)
         {
             double newWeight;
-
+            if(ConversionAmount == 0)
+            {
+                Console.Clear();
+                Console.WriteLine($"\nChoose option 1. or 2. first as I have nothing to convert.");
+                return;
+            }
             if (initialChoice == 1)
             {
                 // Converting to lbs
@@ -36,10 +45,9 @@ namespace CalculatingWaterPerDay
             }
         }
 
-        public static string CalculatingWeight(double amount, int choice)
+        public static string CalculatingWeight(double amount, int choice=0)
         {
-            double cupCapacityInMilliliters = 236.5882;
-            double ounceInKiloGrams = 0.02835;
+            
             string denomination;
             string recommendedAmmount;
 
@@ -61,16 +69,14 @@ namespace CalculatingWaterPerDay
                 denomination = "lbs";
                 recommendedAmmount = $" is {result:0}oz of water a day,\n\t\twhich adds up to {Decimal.Round((decimal)cup)} cups, per day.";
             }
-
-            // TODO string answer calc
-            string answer = $"\nThe recommended amount for person with the body weight of {Decimal.Round((decimal)amount)}{denomination}" + recommendedAmmount + "\n";
+            string answer = $"\nThe recommended amount for person with the body weight of {Decimal.Round((decimal)amount)}{denomination}" + recommendedAmmount + "\n" + "\nWould you like to convert the number to alternative system?\n(Utilize option 3.)\n";
 
             return answer;
         }
 
         public static void ClassicRuleInfo()
         {
-            Console.WriteLine("Classic Rule is 0.5oz/1lbs of body weight.\n");
+            Console.WriteLine("Classic Rule is 0.5oz/1lbs of body weight.");
         }
 
     }

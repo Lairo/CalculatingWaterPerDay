@@ -21,6 +21,7 @@ namespace CalculatingWaterPerDay
         public static string tonnage = "";
         public static int choiceOfMetric;
         public static bool choiceMade = true;
+        public static int initialChoice;
         public static double tonnageNew;
         static void Main()
         {      
@@ -36,13 +37,15 @@ namespace CalculatingWaterPerDay
                 switch (choiceOfMetric)
                 {
                     case '1': //Kilo
-                        Imperial(choiceOfMetric);
+                        initialChoice = 1;
+                        Imperial(choiceOfMetric);                        
                         break;
                     case '2': //lbs
-                        Imperial(choiceOfMetric);
+                        initialChoice = 2;
+                        Imperial(choiceOfMetric);                        
                         break;
                     case '3': //lbs
-                        Calculating.Converting(tonnageNew, choiceOfMetric);
+                        Calculating.Converting(tonnageNew, initialChoice);
                         Console.WriteLine("\n");
                         break;
                     case '4': //clear

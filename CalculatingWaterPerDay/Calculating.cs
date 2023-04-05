@@ -18,18 +18,20 @@ namespace CalculatingWaterPerDay
         // .5oz/1lbs of body weight
         //
 
-        public static void Converting(double ConversionAmount, int choice)
+        public static void Converting(double ConversionAmount, int initialChoice)
         {
             double newWeight;
 
-            if (choice == 49)
+            if (initialChoice == 1)
             {
-                newWeight = ConversionAmount * 0.453;
+                // Converting to lbs
+                newWeight = ConversionAmount * 2.2;
                 Console.WriteLine(Calculating.CalculatingWeight(newWeight, 2));
             }
             else
             {
-                newWeight = ConversionAmount / 0.453;
+                //Converting to KG
+                newWeight = ConversionAmount / 2.2;
                 Console.WriteLine(Calculating.CalculatingWeight(newWeight, 1));
             }
         }
@@ -49,7 +51,7 @@ namespace CalculatingWaterPerDay
             //converting to liters from ounces
             double liters = result * ounceInKiloGrams;
 
-            if (choice == '1')
+            if (choice == 1)
             {
                 denomination = "KG";
                 recommendedAmmount = $" is {liters:0.00}L water a day,\n\t\twhich adds up to {Decimal.Round((decimal)cup*2)} cups, per day.";
@@ -61,7 +63,7 @@ namespace CalculatingWaterPerDay
             }
 
             // TODO string answer calc
-            string answer = $"\nThe recommended amount for person with the body weight of {amount}{denomination}" + recommendedAmmount + "\n";
+            string answer = $"\nThe recommended amount for person with the body weight of {Decimal.Round((decimal)amount)}{denomination}" + recommendedAmmount + "\n";
 
             return answer;
         }
